@@ -101,7 +101,7 @@
 				} else {
 					$result = $result_array['data'];
 				}
-				unset($result_json, $result_array)
+				unset($result_json, $result_array);
 
 				$images_to_download = array();
 				foreach ($result as $image) {
@@ -270,7 +270,7 @@
 			} else {
 				$result = $result_array['data'];
 			}
-			unset($result_json, $result_array)
+			unset($result_json, $result_array);
 			
 			foreach ($result as $image_rel) {
 
@@ -405,6 +405,10 @@
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 				curl_setopt($ch, CURLOPT_FAILONERROR, 1);
 
+				if ($params['return_handler']) {
+                    			return $ch;
+                		}
+				
 				$result = curl_exec($ch);
 
 				if (0 == curl_errno($ch)) {
